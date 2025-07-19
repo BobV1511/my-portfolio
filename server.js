@@ -1,26 +1,35 @@
+// server.js
 import config from "./config/config.js";
 import app from "./server/express.js";
 import mongoose from "mongoose";
-mongoose.Promise = global.Promise;
-mongoose
-  .connect(config.mongoUri, {
-    //useNewUrlParser: true,
-    //useCreateIndex: true,
-    //useUnifiedTopology: true
-  })
-  .then(() => {
-    console.log("Connected to the database!");
-  });
+import cors from "cors";
+import express from 'express';
 
-mongoose.connection.on("error", () => {
-  throw new Error(`unable to connect to database: ${config.mongoUri}`);
-});
+
+app.use(cors());                        
+app.use(express.json());  
+
+import authRoutes from "./server/routes/auth.routes.js";
+import contactRoutes from "./server/routes/contact.routes.js";
+import projectRoutes from "./server/routes/project.routes.js";
+import qualificationRoutes from "./server/routes/qualification.routes.js";
+
+app.use("/api/auth", authRoutes);
+app.use("/api/contacts", contactRoutes);
+app.use("/api/projects", projectRoutes);
+app.use("/api/qualifications", qualificationRoutes);
+
 app.get("/", (req, res) => {
   res.json({ message: "Welcome to User application." });
 });
-app.listen(config.port, (err) => {
-  if (err) {
-    console.log(err);
-  }
+
+
+mongoose
+  .connect(config.mongoUri)
+  .then(() => console.log("Connected to the database!"))
+  .catch(err => { throw new Error(`unable to connect to database: ${err}`); });
+
+
+app.listen(config.port, () => {
   console.info("Server started on port %s.", config.port);
 });

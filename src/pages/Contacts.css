@@ -1,0 +1,8 @@
+.contacts-container { max-width:600px; margin:2rem auto; padding:0 1rem; }
+.contacts-actions { text-align:right; margin-bottom:1rem; }
+.contact-list { list-style:none; padding:0; }
+.contact-card {
+  background:#fff; border:1px solid #ddd; border-radius:6px;
+  padding:1rem; margin-bottom:.75rem;
+}
+.contact-card-actions button { margin-right:.5rem; }
