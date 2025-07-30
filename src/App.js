@@ -6,7 +6,7 @@ import './App.css';
 
 import Navbar from './components/Navbar.js';
 
-import Home from './pages/Home.js';
+import Home from './pages/Home.jsx';
 import AboutMe from './pages/AboutMe.js';
 import Projects from './pages/Projects.js';
 import Services from './pages/Services.js';
