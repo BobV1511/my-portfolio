@@ -20,7 +20,7 @@
   },
   "scripts": {
     "dev": "concurrently 'vite' \"nodemon server.js\"",
-    "start": "node server.js",
+    "start": "serve -s build", 
     "build": "react-scripts build",
     "lint": "eslint src --ext js,jsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview",
@@ -45,6 +45,7 @@
     "react-dom": "^19.1.0",
     "react-router-dom": "^7.6.3",
     "react-scripts": "^5.0.1",
+    "serve": "^14.2.4",
     "web-vitals": "^5.0.3"
   },
   "browserslist": {
