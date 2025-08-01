@@ -20,7 +20,7 @@ app.use("/api/projects", projectRoutes);
 app.use("/api/qualifications", qualificationRoutes);
 
 app.get("/", (req, res) => {
-  res.json({ message: "Welcome to User application." });
+  res.send("Backend is running!");
 });
 
 
